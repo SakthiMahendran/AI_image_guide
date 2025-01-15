@@ -1,0 +1,59 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: linear-gradient(0deg, #022244, #58c8da);
+  margin: 0;
+}
+
+.about {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  font-family: sans-serif;
+  letter-spacing: 3px;
+  font-weight: 100;
+  opacity: 0.1;
+  bottom: 0;
+  position: absolute;
+}
+
+.ocean {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ocean::after,
+.ocean::before {
+  background-color: white;
+  width: 120%;
+  height: 120px;
+  position: absolute;
+  content: "";
+  top: -80px;
+  left: -10%;
+  border-radius: 100%;
+  animation: waves 10s ease infinite;
+  opacity: 0.2;
+}
+
+.ocean::before {
+  top: -60px;
+  animation-delay: 5s;
+  opacity: 0.1;
+  left: -5%;
+}
+
+@keyframes waves {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}

@@ -1,0 +1,92 @@
+/* SignupPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #58c8da, #022244); /* Fallback in case the image doesn't load */
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+    margin-bottom: 700px;
+    margin-left: 150px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent overlay */
+    color: #fff;
+}
+
+.signup-container h2 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.signup-container input {
+    width: 80%;
+    max-width: 320px;
+    height: 40px;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 10px 0 35px;
+    margin: 0.5rem 0;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    outline: none;
+}
+
+.signup-container input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.signup-container button {
+    width: 80%;
+    max-width: 320px;
+    height: 40px;
+    margin: 1rem 0;
+    background: #9cbfe4;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    font-size: 1.1em;
+    color: #1a1818;
+    font-weight: 550;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.5s;
+}
+
+.signup-container button:hover {
+    background: #1f7cdf;
+}
+
+.signup-container a {
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+.signup-container p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+}
