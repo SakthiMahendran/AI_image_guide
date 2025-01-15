@@ -26,7 +26,7 @@ const History = ({ refreshTrigger }) => {
 
   return (
     <div className="history-content">
-      <h3>Classification History</h3>
+      <h3>Your History</h3>
       <div className="history-list">
         {history.map((item) => (
           <div key={item.image_id} className="history-item">

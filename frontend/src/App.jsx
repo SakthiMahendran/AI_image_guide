@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Upload from "./components/Upload";
 import History from "./components/History";
 import DeleteHistory from "./components/DeleteHistory";
@@ -19,26 +19,33 @@ const App = () => {
 
   return (
     <Router>
-      <div className="app">
-        {/* Ocean Animation */}
-        <OceanAnimation />
+      <DynamicBackground>
+        <div className="app">
+          {/* Ocean Animation */}
+          <OceanAnimation />
 
-        {/* Routes */}
-        <Routes>
-          {/* Base URL redirects to login */}
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/app" element={<AppContent
-            showHistory={showHistory}
-            setShowHistory={setShowHistory}
-            showDelete={showDelete}
-            setShowDelete={setShowDelete}
-            historyTrigger={historyTrigger}
-            handleUploadSuccess={handleUploadSuccess}
-          />} />
-        </Routes>
-      </div>
+          {/* Routes */}
+          <Routes>
+            {/* Base URL redirects to login */}
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route
+              path="/app"
+              element={
+                <AppContent
+                  showHistory={showHistory}
+                  setShowHistory={setShowHistory}
+                  showDelete={showDelete}
+                  setShowDelete={setShowDelete}
+                  historyTrigger={historyTrigger}
+                  handleUploadSuccess={handleUploadSuccess}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </DynamicBackground>
     </Router>
   );
 };
@@ -59,7 +66,7 @@ const AppContent = ({
           className="view-history-button"
           onClick={() => setShowHistory(true)}
         >
-          View Classification History
+          View History
         </button>
         <button
           className="delete-history-button"
@@ -87,6 +94,32 @@ const AppContent = ({
       </div>
     </>
   );
+};
+
+/**
+ * DynamicBackground component
+ * Dynamically sets a background image based on the route
+ */
+const DynamicBackground = ({ children }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/app") {
+      // Set a background for the main app
+      document.body.style.background = 'url("mainbg.jpeg") no-repeat center center fixed';
+      document.body.style.backgroundSize = "cover";
+    } else {
+      // Clear background for other routes (like login/signup)
+      document.body.style.background = "none";
+    }
+
+    // Cleanup background when unmounting or switching routes
+    return () => {
+      document.body.style.background = "none";
+    };
+  }, [location.pathname]);
+
+  return <>{children}</>;
 };
 
 export default App;
