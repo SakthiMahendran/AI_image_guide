@@ -108,10 +108,7 @@ const DynamicBackground = ({ children }) => {
       // Set a background for the main app
       document.body.style.background = 'url("mainbg.jpeg") no-repeat center center fixed';
       document.body.style.backgroundSize = "cover";
-    } else {
-      // Clear background for other routes (like login/signup)
-      document.body.style.background = "none";
-    }
+    } 
 
     // Cleanup background when unmounting or switching routes
     return () => {
