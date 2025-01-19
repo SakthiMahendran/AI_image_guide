@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const baseUrl = "http://127.0.0.1:8000"; // Django backend
 
-const History = ({ refreshTrigger }) => {
+const History = () => {
   const [history, setHistory] = useState([]);
 
   const fetchHistory = async () => {
@@ -20,13 +20,16 @@ const History = ({ refreshTrigger }) => {
     }
   };
 
-  useEffect(() => {
+  const handleHistoryClick = () => {
     fetchHistory();
-  }, [refreshTrigger]); // Fetch history when refreshTrigger changes
+  };
 
   return (
     <div className="history-content">
       <h3>Your History</h3>
+      <button className="history-button" onClick={handleHistoryClick}>
+        Refresh History
+      </button>
       <div className="history-list">
         {history.map((item) => (
           <div key={item.image_id} className="history-item">
